@@ -8,32 +8,42 @@ $(".saveBtn").on("click", function () {
 //get text area current value
     console.log(this);
 //get the parent attributes
-    let textDescription= $(this).closest(".description").val();
+    let textDescription= $(this).siblings(".description").val();
     let time=$(this).parent().attr("id");
  //set initial items in local storage
-    localStorage.setItem(textDescription,time);   
+   localStorage.setItem(textDescription,time);   
 })
 
 //Time block function-color coded to indicate past,present,future
 function timeBlockAudit(){
     //declare hour variable
     let hour = moment().hours();
-    //let currentHour=
-    $("time-block").each(function(){
-        if (hour===currentHour){
-            $(this).addClass("present")
-        }
-        if (hour>currentHour){
-            $(this).addClass ("past")
-        }
-        if (hour <currentHour){
-            $(this).addClass ("future")
-        }
-    })
+   //get all elements that has a timeblock class
+   let timeBlocks=document.getElementsByClassName("time-block")
+   console.log(timeBlocks);
+   for (let i=0; i<timeBlocks.length; i++){
+      let timeBlockHour= timeBlocks[i].id;
+       if (timeBlockHour < hour){
+        $("#"+timeBlockHour).addClass ("past");
+        console.log ($(this));
+       }
+       if (timeBlockHour > hour){
+        $("#"+timeBlockHour).addClass ("future");
+        console.log ($(this));
+       }
+       if (timeBlockHour === hour){
+        $("#"+timeBlockHour).addClass ("present");
+        console.log ($(this));
+       }
+   }
 }
-//Task description to edit inline
+
+//when the page loads, data in local storage is displayed 
+JSON.parse(localStorage.getItem('#9','.description'));
 
 
+
+timeBlockAudit();
 
 /*
 GIVEN I am using a daily planner to create a schedule
