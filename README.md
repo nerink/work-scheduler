@@ -1,6 +1,9 @@
 # 05 Third-Party APIs: Work Day Scheduler
 Website:https://nerink.github.io/work-scheduler/
+
 Repo URL:https://github.com/nerink/work-scheduler
+
+This website displays an individuals work schedule from 9am-5pm. 
 
 ## Acceptance Criteria
 
